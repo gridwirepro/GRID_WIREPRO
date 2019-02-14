@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/admin_nav"
+            android:title="EMPLOYEE LOGIN" />
+        <item
+            android:id="@+id/pay_nav"
+            android:title="QUICK PAY" />
+        <item
+            android:id="@+id/comp_nav"
+            android:title="REGISTER COMPLAINT" />
+        <item
+            android:id="@+id/status_nav"
+            android:title="COMPLAINT STATUS" />
+        <item
+            android:id="@+id/con_nav"
+            android:title="NEW CONNECTION" />
+        <item
+            android:id="@+id/tariff_nav"
+            android:title="TARIFF AT A GLANCE" />
+        <item
+            android:id="@+id/tel_nav"
+            android:title="TELEPHONE DIRECTORY" />
+        <item
+            android:id="@+id/abtus_nav"
+            android:title="ABOUT US" />
+        <item
+            android:id="@+id/contact_nav"
+            android:title="CONTACT US" />
+
+
+
+
+    </group>
+
+
+</menu>

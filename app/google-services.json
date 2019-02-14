@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "298921684240",
+    "firebase_url": "https://grid-wire.firebaseio.com",
+    "project_id": "grid-wire",
+    "storage_bucket": "grid-wire.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:298921684240:android:b2302d83e59a6b04",
+        "android_client_info": {
+          "package_name": "com.project.gridwirepro"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "298921684240-nvideilti35g5igemplfisj3l71lok0q.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.project.gridwirepro",
+            "certificate_hash": "53a18c4d736268761fc432029e287b8ffe83edf3"
+          }
+        },
+        {
+          "client_id": "298921684240-qke9rk7r87b7dm1qk4hmk16abbbrieha.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDvXmM2_yczrq_eIwnGXHIp27_2BbPWn1g"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "298921684240-qke9rk7r87b7dm1qk4hmk16abbbrieha.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/employee_admin"
+            android:title="EMPLOYEE" />
+        <item
+            android:id="@+id/consumer_admin"
+            android:title="CONSUMER" />
+        <item
+            android:id="@+id/report_admin"
+            android:title="REPORT" />
+        <item
+            android:id="@+id/billhis_admin"
+            android:title="BILL HISTORY" />
+        <item
+            android:id="@+id/complaints_admin"
+            android:title="COMPLAINTS" />
+    </group>
+<group>
+        <item
+            android:id="@+id/logout_admin"
+            android:title="LOG OUT" />
+</group>
+    </menu>
+
+
