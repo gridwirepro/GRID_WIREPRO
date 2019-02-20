@@ -9,7 +9,8 @@
         android:roundIcon="@drawable/grid"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".consumer"></activity>
+        <activity android:name=".ocr_capture"></activity>
+        <activity android:name=".consumer" />
         <activity android:name=".emp" />
         <activity android:name=".ocr_page" />
         <activity
@@ -31,6 +32,8 @@
         <meta-data
             android:name="com.google.firebase.ml.vision.DEPENDENCIES"
             android:value="ocr" />
+        <!-- To use multiple models: android:value="ocr,model2,model3" -->
     </application>
+
 
 </manifest>

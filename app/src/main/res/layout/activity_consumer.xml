@@ -104,7 +104,7 @@
             tools:layout_editor_absoluteY="250dp" />
 
         <EditText
-            android:id="@+id/cons_mobile"
+            android:id="@+id/con_mobile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -129,7 +129,7 @@
             tools:layout_editor_absoluteY="301dp" />
 
         <EditText
-            android:id="@+id/cons_email"
+            android:id="@+id/con_email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -147,11 +147,12 @@
         android:gravity="center">
 
         <Button
-            android:id="@+id/cons_reg"
+            android:id="@+id/con_reg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="REGISTER"
             tools:layout_editor_absoluteX="152dp"
-            tools:layout_editor_absoluteY="359dp" />
+            tools:layout_editor_absoluteY="359dp"
+            android:onClick="consumer_reg"/>
     </LinearLayout>
     </LinearLayout>
