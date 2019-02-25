@@ -138,6 +138,31 @@
             tools:layout_editor_absoluteY="293dp" />
 
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@drawable/border"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="METER READING"
+            tools:layout_editor_absoluteX="11dp"
+            tools:layout_editor_absoluteY="301dp" />
+
+        <EditText
+            android:id="@+id/con_reading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="number"
+            tools:layout_editor_absoluteX="161dp"
+            tools:layout_editor_absoluteY="293dp" />
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"

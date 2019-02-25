@@ -74,11 +74,17 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.admin_nav) {
-             Intent i = new Intent(this,admin_login.class);
+        if (id == R.id.bill_nav) {
+             Intent i = new Intent(this,ocr_page.class);
 
              startActivity(i);
         }
+        if (id == R.id.admin_nav) {
+            Intent i = new Intent(this,admin_login.class);
+
+            startActivity(i);
+        }
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

@@ -20,7 +20,8 @@ public class consumer extends AppCompatActivity {
     EditText con_address;
     EditText con_mobile;
     EditText con_email;
-    String name,mobile,id,address,email;
+    EditText con_reading;
+    String name,mobile,id,address,email,reading;
     Button con_reg;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference dbref = database.getReference("consumer");
@@ -36,11 +37,14 @@ public class consumer extends AppCompatActivity {
         con_mobile=findViewById(R.id.con_mobile);
         con_email=findViewById(R.id.con_email);
         con_reg=findViewById(R.id.con_reg);
+        con_reading=findViewById(R.id.con_reading);
         name=con_name.getText().toString();
         id=con_id.getText().toString();
         address=con_address.getText().toString();;
         mobile=con_mobile.getText().toString();
         email=con_email.getText().toString();
+        reading=con_reading.getText().toString();
+
     }
     public void consumer_reg(View view) {
         if (con_name.getText().toString().trim().length() == 0) {
@@ -73,6 +77,12 @@ public class consumer extends AppCompatActivity {
             con_email.requestFocus();
 
         }
+        if (con_reading.getText().toString().trim().length() == 0) {
+            f++;
+            con_reading.setError("CONSUMER METER READING is not entered");
+            con_reading.requestFocus();
+
+        }
         if (f == 0) {
             dbref.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
@@ -86,7 +96,7 @@ public class consumer extends AppCompatActivity {
                     conRef.child("Phone").setValue(mobile);
                     conRef.child("address").setValue(address);
                     conRef.child("email").setValue(email);
-                    conRef.child("password").setValue("password");
+                    conRef.child("reading").setValue(reading);
                 }
 
                 @Override

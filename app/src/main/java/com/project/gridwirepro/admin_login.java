@@ -22,12 +22,7 @@ public class admin_login extends AppCompatActivity {
         pass=findViewById(R.id.input_pass);
     }
 
-    public void log_click(View view)
-    {
-        Intent i = new Intent(this,ocr_page.class);
-        startActivity(i);
 
-    }
     public void admin(View view)
     {
        // if((user.getText().equals("admin"))&&pass.getText().equals("admin"))

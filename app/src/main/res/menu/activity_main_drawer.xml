@@ -5,8 +5,8 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/admin_nav"
-            android:title="EMPLOYEE LOGIN" />
+            android:id="@+id/bill_nav"
+            android:title="BILLING" />
         <item
             android:id="@+id/pay_nav"
             android:title="QUICK PAY" />
@@ -31,6 +31,9 @@
         <item
             android:id="@+id/contact_nav"
             android:title="CONTACT US" />
+        <item
+            android:id="@+id/admin_nav"
+            android:title="ADMIN" />
 
 
 

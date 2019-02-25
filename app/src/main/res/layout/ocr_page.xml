@@ -1,44 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ocr_page"
-   >
+    tools:context=".emp"
+    android:orientation="vertical"
+    android:background="@drawable/border1"
+    android:layout_marginTop="50dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginBottom="50dp"
+
+    android:gravity="center">
+   <LinearLayout
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content">
     <ImageView
-        android:id="@+id/image_view"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/employee"/>
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="EMPLOYEE ID"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="114dp" />
+
+    <EditText
+        android:id="@+id/empl_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number"
+        tools:layout_editor_absoluteX="152dp"
+        tools:layout_editor_absoluteY="103dp" />
+   </LinearLayout>
+
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="METER READING"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="114dp" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+    <EditText
+        android:id="@+id/meter_reading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number"
+        tools:layout_editor_absoluteX="152dp"
+        tools:layout_editor_absoluteY="103dp" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="OCR"
+        tools:layout_editor_absoluteX="152dp"
+        tools:layout_editor_absoluteY="359dp"
+        android:onClick="ocr"/>
+    </LinearLayout>
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="fitStart"
-        app:layout_constraintTop_toBottomOf="parent"
-        app:layout_constraintBottom_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:contentDescription="@string/select_image_for_text_recognition" />
-    <com.google.firebase.codelab.mlkit.GraphicOverlay
-        android:id="@+id/graphic_overlay"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        app:layout_constraintTop_toTopOf="@id/image_view"
-        app:layout_constraintBottom_toBottomOf="@id/image_view"
-        app:layout_constraintLeft_toLeftOf="@id/image_view"
-        app:layout_constraintRight_toRightOf="@id/image_view"
-        android:layout_alignParentStart="true" />
-    <Button
-        android:id="@+id/button_text"
-        android:text="@string/find_text_button"
-        android:layout_width="0dp"
-        android:layout_height="55dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
-    <Button
-        android:id="@+id/button_cloud_text"
-        android:layout_width="0dp"
-        android:text="@string/find_text_cloud_button"
-        android:layout_height="55dp"
-        app:layout_constraintLeft_toRightOf="@id/button_text"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp">
+
+        <Button
+            android:id="@+id/emp_reg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ENTER"
+            tools:layout_editor_absoluteX="152dp"
+            tools:layout_editor_absoluteY="359dp"
+            android:onClick="enter"/>
+    </LinearLayout>
 
 
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>

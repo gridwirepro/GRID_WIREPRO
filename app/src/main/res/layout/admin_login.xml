@@ -6,24 +6,31 @@
     android:layout_height="match_parent"
     tools:context=".admin_login"
     >
+
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="200dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="40dp"
         android:orientation="vertical"
         android:gravity="center"
         android:paddingLeft="24dp"
-        android:paddingRight="24dp"
+        android:paddingRight="40dp"
         android:paddingTop="20dp"
-        android:background="@drawable/border2">
+        android:background="@drawable/border1"
+        android:layout_gravity="center">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/employee"
+            />
         <EditText
             android:id="@+id/input_id"
             android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="EMPLOYEE ID"
+            android:hint=" ID"
             android:inputType="textPersonName" />
 
         <EditText
@@ -33,37 +40,18 @@
             android:hint="Password"
             android:inputType="textPassword" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            >
 
-            <android.support.v7.widget.AppCompatButton
-                android:id="@+id/login"
-                android:layout_width="450px"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="100dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginBottom="24dp"
-               android:text="LOGIN"
-                android:onClick="log_click"
-                android:padding="12dp" />
-            <android.support.v7.widget.AppCompatButton
+            <Button
                 android:id="@+id/admin_signup"
                 android:layout_width="450px"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="30dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="100dp"
                 android:onClick="admin"
                 android:padding="12dp"
                 android:text="ADMIN"
+                android:layout_marginBottom="50dp"
                 />
 
 
-
-        </LinearLayout>
     </LinearLayout>
 
 </LinearLayout>
