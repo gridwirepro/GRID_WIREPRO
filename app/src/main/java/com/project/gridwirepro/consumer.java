@@ -1,6 +1,6 @@
 package com.project.gridwirepro;
 
-import android.support.annotation.NonNull;
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -24,7 +24,7 @@ public class consumer extends AppCompatActivity {
     String name,mobile,id,address,email,reading;
     Button con_reg;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference dbref = database.getReference("consumer");
+    DatabaseReference dbref1 = database.getReference("consumer");
     int f=0;
 
     @Override
@@ -84,12 +84,13 @@ public class consumer extends AppCompatActivity {
 
         }
         if (f == 0) {
-            dbref.addListenerForSingleValueEvent(new ValueEventListener() {
+           dbref1.addValueEventListener(new ValueEventListener() {
                 @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                public void onDataChange( DataSnapshot dataSnapshot) {
                     int nocon = Integer.parseInt(String.valueOf(dataSnapshot.getValue()));
-                    dbref.setValue(nocon + 1);
-                    DatabaseReference conRef = database.getReference(dbref.getKey() + nocon);
+                    dbref1.setValue(nocon + 1);
+                    nocon=(nocon+1);
+                    DatabaseReference conRef = database.getReference(dbref1.getKey() + nocon);
 
                     conRef.child("Name").setValue(name);
                     conRef.child("id").setValue(id);
@@ -100,7 +101,7 @@ public class consumer extends AppCompatActivity {
                 }
 
                 @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
+                public void onCancelled(DatabaseError databaseError) {
                     Toast.makeText(consumer.this, "Unable to connect. Please try again later.", Toast.LENGTH_LONG).show();
                 }
             });

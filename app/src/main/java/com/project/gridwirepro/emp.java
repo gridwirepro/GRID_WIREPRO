@@ -23,7 +23,7 @@ public class emp extends AppCompatActivity {
     String name,mobile,id,address,email;
     Button emp_reg;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference dbref = database.getReference("employee");
+    DatabaseReference dbref2 = database.getReference("employee");
     int f=0;
 
     @Override
@@ -43,7 +43,7 @@ public class emp extends AppCompatActivity {
         email=emp_email.getText().toString();
     }
     public void employee_reg(View view) {
-        if (emp_name.getText().toString().trim().length() == 0) {
+        /*if (emp_name.getText().toString().trim().length() == 0) {
             f++;
             emp_name.setError("EMPLOYEE NAME is not entered");
             emp_name.requestFocus();
@@ -72,14 +72,14 @@ public class emp extends AppCompatActivity {
             emp_email.setError("EMPLOYEE EMAIL is not entered");
             emp_email.requestFocus();
 
-        }
+        } */
         if (f == 0) {
-            dbref.addListenerForSingleValueEvent(new ValueEventListener() {
+            dbref2.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     int noemp = Integer.parseInt(String.valueOf(dataSnapshot.getValue()));
-                    dbref.setValue(noemp + 1);
-                    DatabaseReference empRef = database.getReference(dbref.getKey() + noemp);
+                    dbref2.setValue(noemp + 1);
+                    DatabaseReference empRef = database.getReference(dbref2.getKey() + noemp);
 
                     empRef.child("Name").setValue(name);
                     empRef.child("id").setValue(id);
