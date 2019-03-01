@@ -40,14 +40,14 @@ public class consumer extends AppCompatActivity {
         con_reading=findViewById(R.id.con_reading);
         name=con_name.getText().toString();
         id=con_id.getText().toString();
-        address=con_address.getText().toString();;
+        address=con_address.getText().toString();
         mobile=con_mobile.getText().toString();
         email=con_email.getText().toString();
         reading=con_reading.getText().toString();
 
     }
     public void consumer_reg(View view) {
-        if (con_name.getText().toString().trim().length() == 0) {
+        /*if (con_name.getText().toString().trim().length() == 0) {
             f++;
             con_name.setError("CONSUMER NAME is not entered");
             con_name.requestFocus();
@@ -84,7 +84,7 @@ public class consumer extends AppCompatActivity {
 
         }
         if (f == 0) {
-           dbref1.addValueEventListener(new ValueEventListener() {
+        */   dbref1.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange( DataSnapshot dataSnapshot) {
                     int nocon = Integer.parseInt(String.valueOf(dataSnapshot.getValue()));
@@ -92,12 +92,12 @@ public class consumer extends AppCompatActivity {
                     nocon=(nocon+1);
                     DatabaseReference conRef = database.getReference(dbref1.getKey() + nocon);
 
-                    conRef.child("Name").setValue(name);
-                    conRef.child("id").setValue(id);
-                    conRef.child("Phone").setValue(mobile);
-                    conRef.child("address").setValue(address);
-                    conRef.child("email").setValue(email);
-                    conRef.child("reading").setValue(reading);
+                    conRef.child("Name").setValue(con_name.getText().toString());
+                    conRef.child("id").setValue(con_id.getText().toString());
+                    conRef.child("Phone").setValue(Integer.parseInt(mobile));
+                    conRef.child("address").setValue(con_address.getText().toString());
+                    conRef.child("email").setValue(con_email.getText().toString());
+                    conRef.child("reading").setValue(con_reading.getText().toString());
                 }
 
                 @Override
@@ -105,6 +105,6 @@ public class consumer extends AppCompatActivity {
                     Toast.makeText(consumer.this, "Unable to connect. Please try again later.", Toast.LENGTH_LONG).show();
                 }
             });
-        }
+        //}
     }
 }

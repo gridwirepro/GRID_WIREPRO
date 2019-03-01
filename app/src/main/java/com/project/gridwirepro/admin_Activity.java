@@ -14,9 +14,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
-
+import com.google.firebase.auth.FirebaseAuth;
 public class admin_Activity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +35,7 @@ public class admin_Activity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        auth = FirebaseAuth.getInstance();
     }
 
     @Override
@@ -91,6 +93,7 @@ public class admin_Activity extends AppCompatActivity
 
         }
         else if (id == R.id.logout_admin) {
+            auth.signOut();
             Intent i = new Intent(this,admin_login.class);
             Toast.makeText(this, "LOGOUT SUCCESSFUL", Toast.LENGTH_SHORT).show();
             startActivity(i);
