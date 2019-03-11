@@ -20,7 +20,7 @@ public class emp extends AppCompatActivity {
     EditText emp_address;
     EditText emp_mobie;
     EditText emp_email;
-    String name,mobile,id,address,email;
+    String id;
     Button emp_reg;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference dbref2 = database.getReference();
