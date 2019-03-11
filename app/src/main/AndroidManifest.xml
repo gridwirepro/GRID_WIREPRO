@@ -9,6 +9,7 @@
         android:roundIcon="@drawable/grid"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".complaint"></activity>
         <activity android:name=".consumer" />
         <activity android:name=".emp" />
         <activity android:name=".ocr_page" />

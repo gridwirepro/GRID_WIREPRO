@@ -97,6 +97,7 @@ public class admin_Activity extends AppCompatActivity
             Intent i = new Intent(this,admin_login.class);
             Toast.makeText(this, "LOGOUT SUCCESSFUL", Toast.LENGTH_SHORT).show();
             startActivity(i);
+            finish();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

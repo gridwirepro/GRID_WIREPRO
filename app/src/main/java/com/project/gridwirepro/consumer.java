@@ -24,7 +24,7 @@ public class consumer extends AppCompatActivity {
     String name,mobile,id,address,email,reading;
     Button con_reg;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference dbref1 = database.getReference("consumer");
+    DatabaseReference dbref1 = database.getReference();
     int f=0;
 
     @Override
@@ -47,7 +47,7 @@ public class consumer extends AppCompatActivity {
 
     }
     public void consumer_reg(View view) {
-        /*if (con_name.getText().toString().trim().length() == 0) {
+        if (con_name.getText().toString().trim().length() == 0) {
             f++;
             con_name.setError("CONSUMER NAME is not entered");
             con_name.requestFocus();
@@ -84,27 +84,12 @@ public class consumer extends AppCompatActivity {
 
         }
         if (f == 0) {
-        */   dbref1.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange( DataSnapshot dataSnapshot) {
-                    int nocon = Integer.parseInt(String.valueOf(dataSnapshot.getValue()));
-                    dbref1.setValue(nocon + 1);
-                    nocon=(nocon+1);
-                    DatabaseReference conRef = database.getReference(dbref1.getKey() + nocon);
-
-                    conRef.child("Name").setValue(con_name.getText().toString());
-                    conRef.child("id").setValue(con_id.getText().toString());
-                    conRef.child("Phone").setValue(Integer.parseInt(mobile));
-                    conRef.child("address").setValue(con_address.getText().toString());
-                    conRef.child("email").setValue(con_email.getText().toString());
-                    conRef.child("reading").setValue(con_reading.getText().toString());
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-                    Toast.makeText(consumer.this, "Unable to connect. Please try again later.", Toast.LENGTH_LONG).show();
-                }
-            });
-        //}
+            dbref1.child("consumer").child(con_id.getText().toString());
+            dbref1.child("consumer").child(con_id.getText().toString()).child("name").setValue(con_name.getText().toString());
+            dbref1.child("consumer").child(con_id.getText().toString()).child("Phone").setValue(con_mobile.getText().toString());
+            dbref1.child("consumer").child(con_id.getText().toString()).child("address").setValue(con_address.getText().toString());
+            dbref1.child("consumer").child(con_id.getText().toString()).child("email").setValue(con_email.getText().toString());
+            dbref1.child("consumer").child(con_id.getText().toString()).child("meter reading").setValue(con_reading.getText().toString());
+        }
     }
 }

@@ -32,7 +32,9 @@ public class admin_login extends AppCompatActivity {
 
     public void admin(View view)
     {
-        String txt = user.getText().toString();
+        Intent i = new Intent(admin_login.this, admin_Activity.class);
+        startActivity(i);
+      /*  String txt = user.getText().toString();
         String pass = paswrd.getText().toString();
         auth.signInWithEmailAndPassword(txt,pass).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
@@ -46,19 +48,19 @@ public class admin_login extends AppCompatActivity {
                 }
             }
         });
-                /*if(txt.equals("")||pass.equals("")) {
+        if(txt.equals("")||pass.equals("")) {
             Toast.makeText(this,"username or password can't be null",Toast.LENGTH_LONG).show();
         }
         else {
             if (pass.equals("admin")) {
-                Intent i = new Intent(this, option.class);
+                Intent i = new Intent(this, admin_Activity.class);
                 startActivity(i);
             } else {
                 Toast.makeText(getApplicationContext(), "login failed", Toast.LENGTH_LONG).show();
             }
-        }*/
+        }
         user.setText("");
         paswrd.setText("");
-        user.requestFocus();
+        user.requestFocus();*/
     }
 }

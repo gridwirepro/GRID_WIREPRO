@@ -23,7 +23,7 @@ public class emp extends AppCompatActivity {
     String name,mobile,id,address,email;
     Button emp_reg;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference dbref2 = database.getReference("employee");
+    DatabaseReference dbref2 = database.getReference();
     int f=0;
 
     @Override
@@ -36,14 +36,10 @@ public class emp extends AppCompatActivity {
         emp_mobie=findViewById(R.id.emp_mobile);
         emp_email=findViewById(R.id.emp_email);
         emp_reg=findViewById(R.id.emp_reg);
-        name=emp_name.getText().toString();
         id=emp_id.getText().toString();
-        address=emp_address.getText().toString();;
-        mobile=emp_mobie.getText().toString();
-        email=emp_email.getText().toString();
     }
     public void employee_reg(View view) {
-        /*if (emp_name.getText().toString().trim().length() == 0) {
+        if (emp_name.getText().toString().trim().length() == 0) {
             f++;
             emp_name.setError("EMPLOYEE NAME is not entered");
             emp_name.requestFocus();
@@ -72,28 +68,13 @@ public class emp extends AppCompatActivity {
             emp_email.setError("EMPLOYEE EMAIL is not entered");
             emp_email.requestFocus();
 
-        } */
+        }
         if (f == 0) {
-            dbref2.addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    int noemp = Integer.parseInt(String.valueOf(dataSnapshot.getValue()));
-                    dbref2.setValue(noemp + 1);
-                    DatabaseReference empRef = database.getReference(dbref2.getKey() + noemp);
-
-                    empRef.child("Name").setValue(name);
-                    empRef.child("id").setValue(id);
-                    empRef.child("Phone").setValue(mobile);
-                    empRef.child("address").setValue(address);
-                    empRef.child("email").setValue(email);
-                    empRef.child("password").setValue("password");
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
-                    Toast.makeText(emp.this, "Unable to connect. Please try again later.", Toast.LENGTH_LONG).show();
-                }
-            });
+            dbref2.child("employee").child(emp_id.getText().toString());
+            dbref2.child("employee").child(emp_id.getText().toString()).child("name").setValue(emp_name.getText().toString());
+            dbref2.child("employee").child(emp_id.getText().toString()).child("Phone").setValue(emp_mobie.getText().toString());
+            dbref2.child("employee").child(emp_id.getText().toString()).child("address").setValue(emp_address.getText().toString());
+            dbref2.child("employee").child(emp_id.getText().toString()).child("email").setValue(emp_email.getText().toString());
         }
     }
 
