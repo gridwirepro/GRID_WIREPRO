@@ -18,6 +18,7 @@ public  class ocr_page  extends AppCompatActivity {
     public void enter(View view)
     {
 
+
     }
     public void ocr(View view)
     {

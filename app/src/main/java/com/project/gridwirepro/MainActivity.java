@@ -1,6 +1,8 @@
 package com.project.gridwirepro;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -13,9 +15,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +31,19 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        //---------------------------------------BUTTON CLICK
+        Button B = findViewById(R.id.b1);
 
+
+
+        B.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        //--------------------------------------
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -73,17 +92,25 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-
-        if (id == R.id.bill_nav) {
-             Intent i = new Intent(this,ocr_page.class);
-
-             startActivity(i);
+        if(id==R.id.pay)
+        {
+             Context context=getApplicationContext();
+             String packageName="com.google.android.apps.nbu.paisa.user";
+            try {
+                Intent intent = context.getPackageManager().getLaunchIntentForPackage(packageName);
+                if (intent == null) {
+                    // Bring user to the market or let them choose an app?
+                    intent = new Intent(Intent.ACTION_VIEW);
+                    intent.setData(Uri.parse("market://details?id=" + packageName));
+                }
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
+            }
+            catch(Exception e){
+                Toast.makeText(getApplicationContext(), "INSTALL GOOGLE PAY APP TO COMPLETE PAYMENT ", Toast.LENGTH_SHORT).show();
+            }
         }
-        if (id == R.id.admin_nav) {
-            Intent i = new Intent(this,admin_login.class);
 
-            startActivity(i);
-        }
         if (id == R.id.comp_nav) {
             Intent i = new Intent(this,complaint.class);
 

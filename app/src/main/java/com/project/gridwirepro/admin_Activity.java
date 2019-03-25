@@ -15,14 +15,55 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 import com.google.firebase.auth.FirebaseAuth;
+import android.Manifest;
+import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.FileProvider;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.util.SparseArray;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.gms.vision.Frame;
+import com.google.android.gms.vision.text.Text;
+import com.google.android.gms.vision.text.TextBlock;
+import com.google.android.gms.vision.text.TextRecognizer;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+
 public class admin_Activity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     FirebaseAuth auth;
+    private static final String LOG_TAG = "Text API";
+    private static final int PHOTO_REQUEST = 10;
+    private TextView scanResults;
+    private Uri imageUri;
+    private TextRecognizer detector;
+    private static final int REQUEST_WRITE_PERMISSION = 20;
+    private static final String SAVED_INSTANCE_URI = "uri";
+    private static final String SAVED_INSTANCE_RESULT = "result";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.admin_activity);
+
+
+
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -37,6 +78,7 @@ public class admin_Activity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
         auth = FirebaseAuth.getInstance();
     }
+
 
     @Override
     public void onBackPressed() {
@@ -75,15 +117,9 @@ public class admin_Activity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-
-        if (id == R.id.employee_admin) {
-            Intent i = new Intent(this,emp.class);
-            startActivity(i);
-        }else if (id == R.id.consumer_admin) {
+        if (id == R.id.addconsumer) {
             Intent i = new Intent(this,consumer.class);
             startActivity(i);
-
-        }else if (id == R.id.report_admin) {
 
         }
         else if (id == R.id.billhis_admin) {

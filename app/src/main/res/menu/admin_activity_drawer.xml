@@ -5,14 +5,8 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/employee_admin"
-            android:title="EMPLOYEE" />
-        <item
-            android:id="@+id/consumer_admin"
-            android:title="CONSUMER" />
-        <item
-            android:id="@+id/report_admin"
-            android:title="REPORT" />
+            android:id="@+id/addconsumer"
+            android:title="ADDING CONSUMER" />
         <item
             android:id="@+id/billhis_admin"
             android:title="BILL HISTORY" />

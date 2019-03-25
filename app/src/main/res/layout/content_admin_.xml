@@ -1,18 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".admin_Activity"
-    tools:showIn="@layout/app_bar_admin_">
+    tools:context=".emp"
+    android:orientation="vertical"
+    android:background="@drawable/border1"
+    android:layout_marginTop="100dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginBottom="50dp"
+
+    android:gravity="center">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/employee"/>
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CONSUMER ID"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="114dp" />
+
+        <EditText
+            android:id="@+id/empl_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="number"
+            tools:layout_editor_absoluteX="152dp"
+            tools:layout_editor_absoluteY="103dp" />
+    </LinearLayout>
+
     <TextView
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="ADMIN PAGE"
-        android:textSize="100dp"
-        android:gravity="center"/>
+        android:text="METER READING"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="114dp" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <EditText
+            android:id="@+id/meter_reading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="number"
+            tools:layout_editor_absoluteX="152dp"
+            tools:layout_editor_absoluteY="103dp" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="OCR"
+            tools:layout_editor_absoluteX="152dp"
+            tools:layout_editor_absoluteY="359dp"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp">
+
+        <Button
+            android:id="@+id/emp_reg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ENTER"
+            tools:layout_editor_absoluteX="152dp"
+            tools:layout_editor_absoluteY="359dp"
+           />
+    </LinearLayout>
 
 
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>
