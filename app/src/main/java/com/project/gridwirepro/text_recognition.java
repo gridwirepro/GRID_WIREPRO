@@ -5,16 +5,29 @@ import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.storage.StorageManager;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.SparseArray;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
+
+import com.google.android.gms.vision.Frame;
+import com.google.android.gms.vision.text.TextBlock;
+import com.google.android.gms.vision.text.TextRecognizer;
+import com.theartofdev.edmodo.cropper.CropImage;
+import com.theartofdev.edmodo.cropper.CropImageView;
 
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -38,6 +51,9 @@ public class text_recognition extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.text_recognition);
+
+        ActionBar actionBar=getSupportActionBar();
+        actionBar.setSubtitle("Click + button to insert Image");
 
         mResultEt=findViewById(R.id.resultEt);
         mPreviewIv=findViewById(R.id.imageIv);
@@ -111,6 +127,8 @@ public class text_recognition extends AppCompatActivity {
 
     private void pickGallery() {
         Intent intent =new Intent(Intent.ACTION_PICK);
+        intent.setType("image/*");
+        startActivityForResult(intent,IMAGE_PICK_GALLERY_CODE);
     }
 
     private void pickCamera() {
@@ -145,5 +163,89 @@ public class text_recognition extends AppCompatActivity {
         boolean result1 = ContextCompat.checkSelfPermission(this,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE)==(PackageManager.PERMISSION_GRANTED);
         return result && result1;
+    }
+    //handle permission result
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch(requestCode){
+            case CAMERA_REQUEST_CODE:
+                if(grantResults.length >0){
+                    boolean cameraAccepted= grantResults[0]==
+                            PackageManager.PERMISSION_GRANTED;
+                    boolean writeStorageAccepted= grantResults[0]==
+                            PackageManager.PERMISSION_GRANTED;
+                    if(cameraAccepted&&writeStorageAccepted){
+                        pickCamera();
+                    }
+                    else{
+                        Toast.makeText(this, "permission denied", Toast.LENGTH_SHORT).show();
+                    }
+
+                }
+                break;
+            case STORAGE_REQUEST_CODE:
+                if(grantResults.length >0){
+                    boolean writeStorageAccepted= grantResults[0]==
+                            PackageManager.PERMISSION_GRANTED;
+                    if(writeStorageAccepted){
+                        pickGallery();
+                    }
+                    else{
+                        Toast.makeText(this, "permission denied", Toast.LENGTH_SHORT).show();
+                    }
+
+                }
+                break;
+
+        }
+    }
+    //handle image Result
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+         if(resultCode==RESULT_OK){
+             if(requestCode==IMAGE_PICK_GALLERY_CODE){
+                 // got image from gallery now crop it
+                 CropImage.activity(data.getData())
+                         .setGuidelines(CropImageView.Guidelines.ON).start(this);
+
+             }
+             if(requestCode==IMAGE_PICK_CAMERA_CODE){
+                 // got image from camera now crop it
+                 CropImage.activity(image_uri)
+                         .setGuidelines(CropImageView.Guidelines.ON).start(this);
+
+             }
+         }
+         //get croped
+        if(requestCode==CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE){
+            CropImage.ActivityResult result = CropImage.getActivityResult(data);
+            if(resultCode==RESULT_OK){
+                Uri resultUri =result.getUri();
+                mPreviewIv.setImageURI(resultUri);
+                //drawable bitmap
+                BitmapDrawable bitmapDrawable=(BitmapDrawable)mPreviewIv.getDrawable();
+                Bitmap bitmap= bitmapDrawable.getBitmap();
+                TextRecognizer recognizer= new TextRecognizer.Builder(getApplicationContext()).build();
+                if(!recognizer.isOperational()){
+                    Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show();
+
+                }
+                else{
+                    Frame frame= new Frame.Builder().setBitmap(bitmap).build();
+                    SparseArray<TextBlock> items=recognizer.detect(frame);
+                    StringBuilder sb=new StringBuilder();
+                    //get text to the limit
+                    for(int i=0;i<items.size();i++)
+                    {
+                        TextBlock myItem=items.valueAt(i);
+                        sb.append(myItem.getValue());
+                        sb.append("\n");
+
+                    }
+                }
+            }
+        }
     }
 }
