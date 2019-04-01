@@ -8,8 +8,8 @@
             android:id="@+id/addconsumer"
             android:title="ADDING CONSUMER" />
         <item
-            android:id="@+id/billhis_admin"
-            android:title="BILL HISTORY" />
+            android:id="@+id/bill_admin"
+            android:title="BILL with ocr" />
         <item
             android:id="@+id/complaints_admin"
             android:title="COMPLAINTS" />
