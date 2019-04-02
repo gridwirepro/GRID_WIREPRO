@@ -128,6 +128,14 @@ public class admin_Activity extends AppCompatActivity
 
         }
         else if (id == R.id.complaints_admin) {
+            final Intent intent = new Intent(Intent.ACTION_VIEW)
+                    .setType("plain/text")
+                    .setData(Uri.parse("test@gmail.com"))
+                    .setClassName("com.google.android.gm", "com.google.android.gm.ComposeActivityGmail")
+                    .putExtra(Intent.EXTRA_EMAIL, new String[]{"nithin.sethumadhavan@gmail.com"})
+                    .putExtra(Intent.EXTRA_SUBJECT, "test")
+                    .putExtra(Intent.EXTRA_TEXT, "hello. this is a message sent from GRIDWIRE_PRO app :-)");
+            startActivity(intent);
 
         }
         else if (id == R.id.logout_admin) {

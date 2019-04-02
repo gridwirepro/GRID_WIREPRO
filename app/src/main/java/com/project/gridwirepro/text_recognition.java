@@ -244,6 +244,7 @@ public class text_recognition extends AppCompatActivity {
                         sb.append("\n");
 
                     }
+                    mResultEt.setText(sb);
                 }
             }
         }
