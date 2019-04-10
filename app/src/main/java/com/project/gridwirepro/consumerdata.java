@@ -1,10 +1,10 @@
 package com.project.gridwirepro;
 
 public class consumerdata {
-    String phno,address,email,meterreading,name,consumerid;
-    float billamnt;
+    String phno,address,email,name,consumerid;
+    float billamnt,meterreading;
  public consumerdata(){}
-    public consumerdata(String phno,String address,String email,String meterreading,String name,String consumerid,float billamnt) {
+    public consumerdata(String phno,String address,String email,Float meterreading,String name,String consumerid,float billamnt) {
         this.phno = phno;
         this.address=address;
         this.email=email;
@@ -38,11 +38,11 @@ public class consumerdata {
         this.name = name;
     }
 
-    public String getMeterreading() {
+    public float getMeterreading() {
         return meterreading;
     }
 
-    public void setMeterreading(String meterreading) {
+    public void setMeterreading(float meterreading) {
         this.meterreading = meterreading;
     }
 

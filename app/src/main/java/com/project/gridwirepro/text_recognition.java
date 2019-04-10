@@ -22,21 +22,33 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.vision.Frame;
 import com.google.android.gms.vision.text.TextBlock;
 import com.google.android.gms.vision.text.TextRecognizer;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import static com.project.gridwirepro.R.id.fbill;
+
 public class text_recognition extends AppCompatActivity {
 
-    EditText mResultEt;
+    EditText mResultEt,t;
     ImageView mPreviewIv;
+    TextView fbill;
+    float reading,curreading,freading,amount;
+
 
 
     private static final int CAMERA_REQUEST_CODE=200;
@@ -58,6 +70,8 @@ public class text_recognition extends AppCompatActivity {
 
         mResultEt=findViewById(R.id.resultEt);
         mPreviewIv=findViewById(R.id.imageIv);
+        fbill=findViewById(R.id.fbill);
+        t=findViewById(R.id.consumerid);
 
         //camera permission
         cameraPermission=new String[]{Manifest.permission.CAMERA,
@@ -252,7 +266,43 @@ public class text_recognition extends AppCompatActivity {
     }
     public void billgen(View view)
     {
+
         Toast.makeText(this, "bill generation", Toast.LENGTH_SHORT).show();
+        String s=t.getText().toString();
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
+        Query query = reference.child("consumer").orderByChild("consumerid").equalTo(s);
+
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    try {
+                        for (DataSnapshot ca : dataSnapshot.getChildren()) {
+                            consumerdata c=ca.getValue(consumerdata.class);
+                            reading =c.getMeterreading();
+                            String f=mResultEt.getText().toString();
+                            curreading=Float.parseFloat(f);
+                            freading=reading-curreading;
+                            amount=freading*10;
+
+                            fbill.setText(String.valueOf(amount));
+
+                        }
+                    }
+                    catch (Exception e){
+                        Toast.makeText(text_recognition.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+
+
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
 
     }
 }

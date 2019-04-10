@@ -88,7 +88,7 @@ public class consumer extends AppCompatActivity {
             DatabaseReference databasereference2= FirebaseDatabase.getInstance().getReference("consumer");
             String id = databasereference2.push().getKey();
             float billamnt= (float) 0.00;
-           consumerdata cd=new consumerdata(con_mobile.getText().toString(),con_address.getText().toString(),con_email.getText().toString(),con_reading.getText().toString(),con_name.getText().toString(),con_id.getText().toString(),billamnt);
+           consumerdata cd=new consumerdata(con_mobile.getText().toString(),con_address.getText().toString(),con_email.getText().toString(),Float.valueOf(con_reading.getText().toString()),con_name.getText().toString(),con_id.getText().toString(),billamnt);
             databasereference2.child(con_id.getText().toString()).setValue(cd);
 
         }

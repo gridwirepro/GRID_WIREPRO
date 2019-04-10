@@ -49,7 +49,6 @@ public class billandpay extends AppCompatActivity {
                     try {
                         for (DataSnapshot ca : dataSnapshot.getChildren()) {
                             consumerdata c=ca.getValue(consumerdata.class);
-                            Toast.makeText(billandpay.this, "hii", Toast.LENGTH_SHORT).show();
                             tv.setText("ID :-\t\t\t"+c.getConsumerid()+"\nNAME :-\t\t\t"+c.getName()+"\nEMAIL :-\t\t\t"+c.getEmail()+"\nADDRESS :-\t\t\t"+c.getAddress()+"\nPHONE NUMBER :-\t\t\t"+c.getPhno()+"\nMETER READING :-\t\t\t"+c.getMeterreading()+"\nBILL AMOUNT :-\t\t\t"+c.getBillamnt());
 
                         }
