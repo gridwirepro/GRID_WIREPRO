@@ -19,6 +19,7 @@ import android.os.Bundle;
 import android.util.SparseArray;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -248,5 +249,10 @@ public class text_recognition extends AppCompatActivity {
                 }
             }
         }
+    }
+    public void billgen(View view)
+    {
+        Toast.makeText(this, "bill generation", Toast.LENGTH_SHORT).show();
+
     }
 }

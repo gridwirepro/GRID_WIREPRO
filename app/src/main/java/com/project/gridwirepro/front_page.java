@@ -22,7 +22,7 @@ public class front_page extends AppCompatActivity {
     }
 
     public void consumer(View view) {
-        Intent i = new Intent(front_page.this, MainActivity.class);
+        Intent i = new Intent(front_page.this, billandpay.class);
         startActivity(i);
 
 

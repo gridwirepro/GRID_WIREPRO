@@ -15,6 +15,9 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="5dp">
+
+
+
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -27,7 +30,47 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
                     <TextView
-                        android:text="Result"
+                        android:text="CONSUMER ID"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="20sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                    <EditText
+                        android:id="@+id/consumerid"
+                        android:hint=""
+                        android:autoLink="all"
+                        android:background="@null"
+                        android:padding="5dp"
+                        android:textColor="#000"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
+
+
+
+
+
+
+
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="#fff"
+                app:cardUseCompatPadding="true"
+                app:cardCornerRadius="3dp"
+                app:cardElevation="3dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:text="METER READING"
                         android:textColor="@color/colorPrimary"
                         android:textSize="20sp"
                         android:layout_width="match_parent"
@@ -72,6 +115,20 @@
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center_horizontal">
+            <Button
+                android:id="@+id/pay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="GENERATE BILL"
+                tools:layout_editor_absoluteX="139dp"
+                tools:layout_editor_absoluteY="375dp"
+                android:onClick="billgen"/>
+            </LinearLayout>
 
         </LinearLayout>
     </ScrollView>

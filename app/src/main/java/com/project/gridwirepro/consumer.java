@@ -84,12 +84,13 @@ public class consumer extends AppCompatActivity {
 
         }
         if (f == 0) {
-            dbref1.child("consumer").child(con_id.getText().toString());
-            dbref1.child("consumer").child(con_id.getText().toString()).child("name").setValue(con_name.getText().toString());
-            dbref1.child("consumer").child(con_id.getText().toString()).child("Phone").setValue(con_mobile.getText().toString());
-            dbref1.child("consumer").child(con_id.getText().toString()).child("address").setValue(con_address.getText().toString());
-            dbref1.child("consumer").child(con_id.getText().toString()).child("email").setValue(con_email.getText().toString());
-            dbref1.child("consumer").child(con_id.getText().toString()).child("meter reading").setValue(con_reading.getText().toString());
+
+            DatabaseReference databasereference2= FirebaseDatabase.getInstance().getReference("consumer");
+            String id = databasereference2.push().getKey();
+            float billamnt= (float) 0.00;
+           consumerdata cd=new consumerdata(con_mobile.getText().toString(),con_address.getText().toString(),con_email.getText().toString(),con_reading.getText().toString(),con_name.getText().toString(),con_id.getText().toString(),billamnt);
+            databasereference2.child(con_id.getText().toString()).setValue(cd);
+
         }
     }
 }
